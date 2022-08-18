@@ -33,6 +33,7 @@ def ewma(data, window):
 
 def low_pass_filter(xs, alpha=0.8):
     # low_cut = band[0] / (len(xs) / 2)
+    from scipy import signal
 
     xs = np.concatenate((xs, xs[::-1]))
     sig = signal.butter(N=4, Wn=alpha, btype='lowpass')

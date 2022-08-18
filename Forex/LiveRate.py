@@ -191,26 +191,14 @@ class ForexMarket:
             fx[f'{cur}'] = x_df
         return fx
 
-
-# TEST CLASS
-while True:
-
-    currenciesx = ['USD', 'EUR', 'GBP', 'JPY',  'CHF',] # 'CAD', 'AUD', 'NZD']
-    # print(ForexMarket(currenciesx).get_all_rates())
-    # print(ForexMarket(currenciesx).get_all_df())
-    x = ForexMarket(currenciesx).gen_fx_indexes(time_shift=220, time_frame=mt5.TIMEFRAME_D1)
-
-    for cur, df in x.items():
-        print(cur)
-        df.rename(columns={'open': 'Open', 'high': 'High','low': 'Low','close': 'Close',}, inplace=True)
-        df.index.rename('Date',inplace=True)
-        #print(df.index[0])
-
-        df.index = pd.to_datetime(df.index, format='%m/%d/%Y').strftime('%Y%m%d%H%M')
-        #print(df.index[0])
-        df.to_csv(f'C:\\Users\\z\\Desktop\\candle\\{cur}.csv')
-    print('===')
-    time.sleep(10)
+# ## TEST CLASS
+#
+# currenciesx = ['USD', 'EUR', 'GBP', 'JPY',]# 'CHF', 'CAD', 'AUD', ]  # 'NZD']
+# # print(ForexMarket(currenciesx).get_all_rates())
+# # print(ForexMarket(currenciesx).get_all_df())
+# x = ForexMarket(currenciesx).gen_fx_indexes(time_shift=121, time_frame=mt5.TIMEFRAME_D1)
+#
+#
 # import matplotlib.pyplot as plt
 # from matplotlib.pyplot import figure
 # import mplfinance as mpf
@@ -231,11 +219,9 @@ while True:
 #     # mpf.figure(cur)
 #
 #     # mpf.plot(pd.DataFrame(x[cur]), type='candle',style='yahoo' )
-#     x = ForexMarket(currenciesx).gen_fx_indexes(time_shift=80, time_frame=mt5.TIMEFRAME_MN1)
-#     if cur == 'USD':
-#         mpf.plot(x[cur], ax=axs[i], axtitle=cur, type='candle', block=False)
-#     else:
-#         mpf.plot(x[cur], ax=axs[i], axtitle=cur, type='candle', block=False)
+#     #x = ForexMarket(currenciesx).gen_fx_indexes(time_shift=80, time_frame=mt5.TIMEFRAME_MN1)
+#
+#     mpf.plot(x[cur], ax=axs[i], axtitle=cur, type='candle', block=False)
 #
 # # plt.plot(x['EUR']-x['JPY'] , label = 'EUR JPY')
 #
